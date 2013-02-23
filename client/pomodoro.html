@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <head>
 <title>Pomodoro Timer</title>
+<script src='js/jquery-1.9.1.min.js'></script>
 <script src='js/pomodoro.js'></script>
 <style type="text/css">
 body{
@@ -51,7 +52,7 @@ body{
     <div id="wrapper">
         <h1>ポモドーロタイマー</h1>
         <div id="leftCol">
-        	<p id="timer">25:00</p>
+        	<p id="timer"><span id="minute">1</span>:<span id="second_minute">00</span></p>
         	<div id="today">
         		<p id="complete">complete：19</p>
         		<p id="cancel">cancel：7</p>
