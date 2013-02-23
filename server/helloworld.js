@@ -1,20 +1,19 @@
-                                                                                                     
 var SimpleStore = require('./SimpleStore');
 var simpleStore = new SimpleStore();
 
 process.on('uncaughtException', function(err){
-	console.log('somthing wrong happend');
-	console.log(require('util').inspect(err));
+  console.log('somthing wrong happend');
+  console.log(require('util').inspect(err));
 
-	if(err.code && err.code === 'EADDRINUSE'){
-		console.log('specified address is in use, please check other process that runs on this address & port');
-	}
-	throw err;
+  if(err.code && err.code === 'EADDRINUSE'){
+    console.log('specified address is in use, please check other process that runs on this address & port');
+  }
+  throw err;
 });
 
 var http = require('http');
 http.createServer(function (req, res) {
-  
+
   var url  = req.url;
   var path = url.split('?')[0];
   var qs = url.split('?')[1];
@@ -24,11 +23,11 @@ http.createServer(function (req, res) {
 
   if (path.indexOf('result') > -1) {
 
-    // parse path and querystring 
+    // parse path and querystring
     var querystring = require('querystring');
     var pqs = querystring.parse(qs);
     var date = pqs.date;
-    
+
     // create result
     var result = {};
     result.complete = pqs.complete;
