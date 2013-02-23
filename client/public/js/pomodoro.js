@@ -1,34 +1,31 @@
 $(function(){
-  console.log('load');
 
 var Timer1; //タイマーを格納する変数（タイマーID）の宣言
+var completeCount = 0;
+var cancelCount = 0;
+var compteDate = '';
 
 //カウントダウン関数を1000ミリ秒毎に呼び出す関数
 function start()
 {
+  $('.start').attr('disabled', true);
+  $('.complete').attr('disabled', true);
   CountDown();
-  //document.timer.elements[2].disabled=true;
   Timer1 = setInterval(function(){CountDown()}, 1000);
 }
 
 //タイマー停止関数
 function cancel()
 {
-  var min = $('#minute').text('01');
-  var sec = $('#second_minute').text('00');
-  //document.timer.elements[2].disabled=false;
-  clearInterval(Timer1);
+  cancelCount++;
+  countSet();
+  ReSet();
+  //clearInterval(Timer1);
 }
 
 //カウントダウン関数
 function CountDown()
 {
-  //var min=document.timer.elements[0].value;
-  //var sec=document.timer.elements[1].value;
-  //console.log('CountDown');
-
-
-
   var min = $('#minute').text();;
   var sec = $('#second_minute').text();
 
@@ -39,12 +36,8 @@ function CountDown()
   }
   else
   {
-    //if (min=="") min=0;
     min=parseInt(min);
-
-  //  if (sec=="") sec=0;
     sec=parseInt(sec);
-
     TMWrite(min*60+sec-1);
   }
 }
@@ -57,16 +50,16 @@ function TMWrite(int)
   if (int<=0)
   {
     ReSet();
+    completeCount++;
     alert("時間です！");
+    countSet();
+    $('.start').attr('disabled', false);
   }
   else
   {
     //残り分数はintを60で割って切り捨てる
-    //document.timer.elements[0].value = htlMath.floor(int/60);
     $('#minute').text(Math.floor(int/60));
     //残り秒数はintを60で割った余り
-    //document.timer.elements[1].value=int % 60;
-     //document.timer.elements[1].value=int % 60;
     $('#second_minute').text(int % 60);
   }
 }
@@ -74,19 +67,83 @@ function TMWrite(int)
 //フォームを初期状態に戻す（リセット）関数
 function ReSet()
 {
-  //document.timer.elements[0].value="0";
-  //document.timer.elements[1].value="0";
-  //document.timer.elements[2].disabled=false;
+  var min = $('#minute').text('00');
+  var sec = $('#second_minute').text('10');
+  $('.date').val('');
+  $('.start').attr('disabled', false);
+  $('.complete').attr('disabled', false);
   clearInterval(Timer1);
 }
 
+//カウント数セット
+function countSet()
+{
+  //alert(completeCount);
+  //alert(cancelCount);
+  $('#completeCount').text(completeCount);
+  $('#cancelCount').text(cancelCount);
+}
+
+
 $('.start').click(function(){
-  //Timer1=setInterval("CountDown()",1000);
   start();
 });
 
 $('.cancel').click(function(){
   cancel();
 });
+
+$('.complete').click(function(){
+
+  var date = $('.date').val();
+
+  if($('.date').val().length === 0){
+    alert('日付を入力してください。');
+    return false;
+  }
+
+  if(date.match(/[^0-9]+/)) {
+    alert('日付は半角数字を入力してください。');
+    return false;
+  }
+
+  if($('.date').val().length < 8){
+    alert('日付は8桁入力してください。');
+    return false;
+  }
+
+  //$.get('http://manufacture-sapporo.com:1337/pomodolo/history',
+  // キーワードをパラメータとして追加
+  //function(data) { // コールバック関数で結果データを処理
+  //  console.log("Remote Data: " + data);
+    //console.log(data.Remote Data);
+  //  var parse = JSON.parse(data);
+  //  console.log(parse.);
+   //$.each(parse,function(){
+
+    //});
+  //}
+//);
+
+/*
+  $.ajax({
+  　url : 'http://localhost:3000/pomodolo/result',
+  　type : 'get',
+    data: {
+        date: date,
+        complete: completeCount,
+        cancel: cancelCount
+    },
+  　success : function(data){
+      consol.log('success');
+      ReSet();
+  　},
+  　error : function(){
+      alert('error');
+  　}
+  });
+*/
+});
+
 
 });
