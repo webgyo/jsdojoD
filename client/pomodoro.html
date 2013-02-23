@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" lang="ja" xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<head>
+<title>Pomodoro Timer</title>
+<script src='js/pomodoro.js'></script>
+<style type="text/css">
+body{
+	text-align: center;
+}
+#wrapper{
+	width: 800px;
+	margin: 0 auto;
+	text-align: left;
+	height: 500px;
+}
+#wrapper h1{
+	text-align: center;
+}
+#leftCol{
+}
+#leftCol{
+	float: left;
+	width: 500px;
+    background: #C1C1C1;
+    height: 400px;
+}
+#rightCol{
+	float: left;
+	width: 280px;
+    background: #CCC111;
+    padding: 10px;
+    overflow: auto;
+    height: 380px;
+}
+#timer{
+	text-align: center;
+	font-size:  40px;
+}
+#today{
+	width: 300px;
+	margin: 0 auto;
+}
+</style>
+</head>
+<body>
+    <div id="wrapper">
+        <h1>ポモドーロタイマー</h1>
+        <div id="leftCol">
+        	<p id="timer">25:00</p>
+        	<div id="today">
+        		<p id="complete">complete：19</p>
+        		<p id="cancel">cancel：7</p>
+        	</div>
+        </div>
+        <div id="rightCol">
+        		<dl>
+        			<dt>2013/02/23</dt>
+        			<dd><span>complete：</span>10</dd>
+        			<dd><span>cancel：</span>3</dd>
+        		</dl>
+        		<dl>
+        			<dt>2013/02/23</dt>
+        			<dd><span>complete：</span>10</dd>
+        			<dd><span>cancel：</span>3</dd>
+        		</dl>
+        		<dl>
+        			<dt>2013/02/23</dt>
+        			<dd><span>complete：</span>10</dd>
+        			<dd><span>cancel：</span>3</dd>
+        		</dl>
+        		<dl>
+        			<dt>2013/02/23</dt>
+        			<dd><span>complete：</span>10</dd>
+        			<dd><span>cancel：</span>3</dd>
+        		</dl>
+        		<dl>
+        			<dt>2013/02/23</dt>
+        			<dd><span>complete：</span>10</dd>
+        			<dd><span>cancel：</span>3</dd>
+        		</dl>
+        </div>
+    </div>
+</body>
+</html>
