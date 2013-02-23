@@ -1,12 +1,12 @@
 $(function(){
-	console.log('load');
+  console.log('load');
 
 var Timer1; //タイマーを格納する変数（タイマーID）の宣言
 
 //カウントダウン関数を1000ミリ秒毎に呼び出す関数
 function start()
 {
-	CountDown();
+  CountDown();
   //document.timer.elements[2].disabled=true;
   Timer1 = setInterval(function(){CountDown()}, 1000);
 }
@@ -26,12 +26,12 @@ function CountDown()
   //var min=document.timer.elements[0].value;
   //var sec=document.timer.elements[1].value;
   //console.log('CountDown');
-    
-    
+
+
 
   var min = $('#minute').text();;
   var sec = $('#second_minute').text();
-  
+
   if( (min=="") && (sec=="") )
   {
     alert("時刻を設定してください！");
@@ -41,10 +41,10 @@ function CountDown()
   {
     //if (min=="") min=0;
     min=parseInt(min);
-    
+
   //  if (sec=="") sec=0;
     sec=parseInt(sec);
-    
+
     TMWrite(min*60+sec-1);
   }
 }
@@ -53,7 +53,7 @@ function CountDown()
 function TMWrite(int)
 {
   int=parseInt(int);
-  
+
   if (int<=0)
   {
     ReSet();
@@ -78,15 +78,15 @@ function ReSet()
   //document.timer.elements[1].value="0";
   //document.timer.elements[2].disabled=false;
   clearInterval(Timer1);
-}  
+}
 
 $('.start').click(function(){
-	//Timer1=setInterval("CountDown()",1000);
-	start();
+  //Timer1=setInterval("CountDown()",1000);
+  start();
 });
 
 $('.cancel').click(function(){
-	cancel();
+  cancel();
 });
 
 });
