@@ -5,7 +5,7 @@ app.engine('html', require('ejs').renderFile);
 app.use(express.static('public'))
 
 app.get('/', function(req, res){
-  res.send('Pomodoro!');
+  res.send('Pomodoro!!');
 });
 
 app.get('/pomodoro', function(req, res) {
